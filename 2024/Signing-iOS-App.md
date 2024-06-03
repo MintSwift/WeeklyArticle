@@ -2,6 +2,8 @@
 # Signing iOS App
 디지털 서명,  Code Signing의 세 가지 주요 단계, `codesign` 명령줄 도구를 사용한 앱 서명 및 확인 프로세스에 대해 살펴보겠습니다. 
 
+![](https://raw.githubusercontent.com/MintSwift/MintImage/main/WeeklyOriginal/20240603-Signing-iOS-App.jpg)
+
 # Code Signing  
 최신 버전의 Xcode에서는 모든 코드 서명 활동이 내부적으로 Xcode에서 처리됩니다. 코드 서명 ID를 지정하기만 하면 Xcode가 모든 것을 관리합니다. 이 접근 방식은 개발 팀이 이러한 모든 작업을 Xcode에 의존하여 처리할 수 있고 로컬 Xcode 기기에서 앱을 릴리스할 수 있기 때문에 로컬 기기에서 개발 및 배포하는 데 적합합니다. 하지만 DevOps 및 지속적 배포의 현대 시대에는 로컬 Xcode를 사용하여 애플리케이션을 배포할 수 없습니다. 애플리케이션은 지속적 통합 서버에서 배포해야 합니다. 따라서 빌드를 자동화하고 코드 설계를 자세히 이해해야 할 필요성이 생깁니다.  
   
@@ -41,16 +43,16 @@ $ codesign -s "iPhone Developer: Shashikant Jagtap (MY_TEAMID)" ~/Library/Develo
 
 ``` xhtml
 <key>Frameworks/libswiftos.dylib</key>
-	<dict>
-		<key>hash</key>
-		<data>
-		dyKltMCMbq+pYDVJBtY78y7BuP0=
-		</data>
-		<key>hash2</key>
-		<data>
-		6DxNIVZgqWfOeWfedGQ1+wOnIuA7vQlU+gVA0WhCiRw=
-		</data>
-	</dict>
+    <dict>
+        <key>hash</key>
+        <data>
+        dyKltMCMbq+pYDVJBtY78y7BuP0=
+        </data>
+        <key>hash2</key>
+        <data>
+        6DxNIVZgqWfOeWfedGQ1+wOnIuA7vQlU+gVA0WhCiRw=
+        </data>
+    </dict>
 ```
 그런 다음 검증자는 동일한 해싱 알고리즘을 사용하여 데이터가 변경되지 않았는지 확인합니다. 그러나 이 검증은 저장된 해시의 신뢰성만큼만 신뢰할 수 있습니다. 디지털 서명은 서명 검증을 보장합니다.
 
